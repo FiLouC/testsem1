@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Main {
     // Static list of users, acting as a database
     private static ArrayList<User> users = new ArrayList<>();
@@ -15,6 +18,17 @@ public class Main {
         }
     };
     private static boolean isRunning = true;
+
+    public static void onLogIn() {
+        System.out.print("Enter your username: ");
+        Scanner scanner = new Scanner(System.in);
+        String username = scanner.nextLine();
+        System.out.print("Enter your password: ");
+        String password = scanner.nextLine();
+        User user = authService.logIn(username, password);
+        System.out.println("Welcome, " + user.getUsername() + "!");
+        // TODO Now: Create an instance of the ToDoList class with the logged-in user and call the run method
+    }
 
     /**
      * The entry point of the application.
@@ -63,19 +77,7 @@ public class Main {
         }
     }
 
-    /**
-     * Handles the log-in process, and the post-login operations.
-     */
-    public static void onLogIn() {
-        System.out.print("Enter your username: ");
-        Scanner scanner = new Scanner(System.in);
-        String username = scanner.nextLine();
-        System.out.print("Enter your password: ");
-        String password = scanner.nextLine();
-        User user = authService.logIn(username, password);
-        System.out.println("Welcome, " + user.getUsername() + "!");
-        // TODO Later: Add the to-do list operations
-    }
+
 
     /**
      * Handles the sign-up process.
